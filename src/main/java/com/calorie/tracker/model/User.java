@@ -7,7 +7,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User extends Auditable {
 
 	@Email
@@ -15,10 +15,14 @@ public class User extends Auditable {
 	@Column(unique = true)
 	private String email;
 
+	private String name;
+
 	@NotBlank
 	private String saltedHashedPassword;
 
 	private String role;
+
+	private Long userCalorieLimit;
 
 	public String getEmail() {
 		return email;
@@ -42,6 +46,22 @@ public class User extends Auditable {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Long getUserCalorieLimit() {
+		return userCalorieLimit;
+	}
+
+	public void setUserCalorieLimit(Long userCalorieLimit) {
+		this.userCalorieLimit = userCalorieLimit;
 	}
 
 }

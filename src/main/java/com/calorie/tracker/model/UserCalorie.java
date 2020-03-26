@@ -14,10 +14,10 @@ public class UserCalorie extends Auditable {
 
 	@NotBlank
 	@Column(name = "calories")
-	private int totalCalories;
+	private Long totalCalories;
 
 	@NotBlank
-	private int userId;
+	private Long userId;
 
 	public String getItemName() {
 		return itemName;
@@ -27,19 +27,19 @@ public class UserCalorie extends Auditable {
 		this.itemName = itemName;
 	}
 
-	public int getTotalCalories() {
+	public Long getTotalCalories() {
 		return totalCalories;
 	}
 
-	public void setTotalCalories(int totalCalories) {
+	public void setTotalCalories(Long totalCalories) {
 		this.totalCalories = totalCalories;
 	}
 
-	public int getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 

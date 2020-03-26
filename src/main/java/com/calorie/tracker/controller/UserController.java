@@ -9,18 +9,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.calorie.tracker.model.User;
 import com.calorie.tracker.service.impl.UserCaloriesService;
+import com.calorie.tracker.service.impl.UserService;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
 
 	@Autowired
-	private UserCaloriesService userCalorieService;
+	private UserService userService;
 	
+	@Autowired
+	private UserCaloriesService userCalorieService;
 	
 	@GetMapping("/")
 	public List<User> getAllPlayers() {
-		return userCalorieService.getAllUsers();
+		return userService.getAllUsers();
 	}
+	
+	
 	
 }
