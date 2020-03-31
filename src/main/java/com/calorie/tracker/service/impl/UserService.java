@@ -9,10 +9,12 @@ public interface UserService {
 
 	List<User> getAllUsers();
 
-	void createUser(UserDetailsDTO userDetails);
+	void createUser(User userDetails);
 
 	void updateUser(Long userId,UserDetailsDTO userDetails);
 
 	void deleteUser(Long userId);
+	
+	User findByUserName(String email);
 
 }

@@ -21,15 +21,15 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void createUser(UserDetailsDTO userDetails) {
+	public void createUser(User userDetails) {
 
-		User user = new User();
+	/*	User user = new User();
 		user.setEmail(userDetails.getEmail());
 		user.setRole("ROLE_USER");
 		user.setSaltedHashedPassword(userDetails.getPassword());
 		user.setUserCalorieLimit(userDetails.getCalorieCount());
-		user.setName(userDetails.getName());
-		userRepository.save(user);
+		user.setName(userDetails.getName()); */
+		userRepository.save(userDetails);
 
 	}
 
@@ -46,16 +46,14 @@ public class UserServiceImpl implements UserService {
 			user.setUserCalorieLimit(userDetails.getCalorieCount());
 		}
 
-		if (userDetails.getEmail() != null) {
-			user.setEmail(userDetails.getEmail());
-		}
-
-		if (userDetails.getName() != null) {
-			user.setName(userDetails.getName());
-		}
-
+		
 		userRepository.save(user);
 
+	}
+
+	@Override
+	public User findByUserName(String username) {
+		return userRepository.findByUsername(username);
 	}
 
 }
