@@ -32,4 +32,11 @@ public class Role extends Auditable {
 		this.description = description;
 	}
 
+	@Override
+	public String toString() {
+		return "Role [name=" + name + ", description=" + description + "]";
+	}
+	
+	
+
 }

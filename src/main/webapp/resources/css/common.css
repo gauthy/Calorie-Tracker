@@ -46,3 +46,10 @@ body {
 .has-error {
     color: red
 }
+
+.tabcontent {
+  display: none;
+}
+#view-page {
+  display: block
+}

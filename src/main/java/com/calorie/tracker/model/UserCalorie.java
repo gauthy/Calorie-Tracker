@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.sun.istack.NotNull;
+
 @Entity
 @Table(name = "user_calories")
 public class UserCalorie extends Auditable {
@@ -12,11 +14,11 @@ public class UserCalorie extends Auditable {
 	@Column(name = "item_name")
 	private String itemName;
 
-	@NotBlank
+	@NotNull
 	@Column(name = "calories")
 	private Long totalCalories;
 
-	@NotBlank
+	@NotNull
 	private Long userId;
 
 	public String getItemName() {

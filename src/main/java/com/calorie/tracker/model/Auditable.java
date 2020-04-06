@@ -48,6 +48,10 @@ public abstract class Auditable implements Serializable {
 
 	
 	
+	public Auditable(User user) {
+		id=user.getId();
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -89,6 +93,11 @@ public abstract class Auditable implements Serializable {
 		}
 		return super.equals(obj);
     }
+
+	public Auditable() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 	

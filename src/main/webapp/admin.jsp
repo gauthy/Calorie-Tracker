@@ -14,7 +14,7 @@
 
 
 </head>
-<body onload="view_page()">
+<body onload="show(event,'view-users-page')">
     
 	<div class="container">
 		<c:if test="${pageContext.request.userPrincipal.name != null}">
@@ -32,61 +32,69 @@
 	<nav class="navbar navbar-default">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
-      <li class="tablinks active"><a href="#" onclick="show(event,'view-page')">My Calories</a></li>
-      <li class="tablinks"><a href="#" onclick="show(event,'add-page')">Add Calories</a></li>
+      <li class="tablinks active"><a href="#" onclick="show(event,'view-users-page')">Users</a></li>
+      <li class="tablinks"><a href="#" onclick="show(event,'view-user-calories-page')">User Calories</a></li>
+      <li class="tablinks"><a href="#" onclick="show(event,'delete-user-page')">Delete User</a></li>
     </ul>
   </div>
 </nav>
   
 	
 	
-	<div id="view-page" class="tabcontent">
-		<h1 align="center">My Calories List</h1>
+	<div id="view-users-page" class="tabcontent">
+		<h1 align="center">Users List</h1>
 		<br />
 		<table class="table" >
 			<tr>
-				<th>Item Name</th>
-				<th>Total Calories</th>
-				<th>Created Date</th>
-				
+				<th>User Name</th>
+				<th>Calorie limit</th>
 			</tr>
-		    <tbody id="items-list"></tbody>
+		    <tbody id="users-list"></tbody>
 	
 		</table>
 		
     </div>
 
    
-   <div id="add-page" class="tabcontent">
+   <div id="view-user-calories-page" class="tabcontent">
+    <h1 align="center">User Calories List</h1>
+		<br />
+		<table class="table" >
+			<tr>
+				<th>User Name</th>
+				<th>Item Name</th>
+			    <th>Total Calories</th>
+	
+			</tr>
+		    <tbody id="user-calorie-list"></tbody>
+	
+		</table>
+	     
+   
+   </div>
+   
+   <div id="delete-user-page" class="tabcontent">
      <div id="feedback"></div>
 
-        <form class="form-horizontal" id="search-form">
+        <form class="form-horizontal" id="delete-form">
             <div class="form-group form-group-lg">
-                <label class="col-sm-2 control-label">Item Name</label>
+                <label class="col-sm-2 control-label">User Name</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="itemName"/>
+                    <input type="text" class="form-control" id="userName"/>
                 </div>
             </div>
-            
-            <div class="form-group form-group-lg">
-                <label class="col-sm-2 control-label">Total Calories</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="totalCalories"/>
-                </div>
-            </div>
-            
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" id="bth-search"
-                            class="btn btn-primary btn-lg">Submit
+                            class="btn btn-primary btn-lg">Delete
                     </button>
                 </div>
             </div>
         </form>
-     
-   
    </div>
+   
+   
    
 
 	<script

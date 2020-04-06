@@ -23,10 +23,6 @@ public class User extends Auditable {
 
 	@NotBlank
 	private String password;
-	
-	@NotBlank
-	private String passwordConfirm;
-
 
 	private Long userCalorieLimit;
 	
@@ -34,9 +30,11 @@ public class User extends Auditable {
 	Set<Role> roles = new HashSet<>();
 
 	public User(User user) {
+		super(user);
 		username=user.getUsername();
 		password=user.getPassword();
 		roles=user.getRoles();
+		userCalorieLimit=user.getUserCalorieLimit();   
 	}
 
 	public User() {
@@ -77,17 +75,9 @@ public class User extends Auditable {
 		this.roles = roles;
 	}
 
-	public String getPasswordConfirm() {
-		return passwordConfirm;
-	}
-
-	public void setPasswordConfirm(String passwordConfirm) {
-		this.passwordConfirm = passwordConfirm;
-	}
-
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", password=" + password + ", passwordConfirm=" + passwordConfirm
+		return "User [username=" + username + ", password=" + password 
 				+ ", userCalorieLimit=" + userCalorieLimit + ", roles=" + roles + "]";
 	}
 	

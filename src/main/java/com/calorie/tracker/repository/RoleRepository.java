@@ -6,4 +6,6 @@ import com.calorie.tracker.model.Role;
 
 public interface RoleRepository extends JpaRepository<Role, Long> {
 
+	Role findByDescription(String name);
+
 }

@@ -1,12 +1,15 @@
 package com.calorie.tracker.service.impl;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.calorie.tracker.dto.UserDetailsDTO;
+import com.calorie.tracker.enums.Roles;
+import com.calorie.tracker.model.Role;
 import com.calorie.tracker.model.User;
+import com.calorie.tracker.repository.RoleRepository;
 import com.calorie.tracker.repository.UserRepository;
 
 @Service
@@ -14,6 +17,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private RoleRepository roleRepository;
 
 	@Override
 	public List<User> getAllUsers() {
@@ -22,13 +28,11 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void createUser(User userDetails) {
-
-	/*	User user = new User();
-		user.setEmail(userDetails.getEmail());
-		user.setRole("ROLE_USER");
-		user.setSaltedHashedPassword(userDetails.getPassword());
-		user.setUserCalorieLimit(userDetails.getCalorieCount());
-		user.setName(userDetails.getName()); */
+		
+		Role role=roleRepository.findByDescription(Roles.USER.name());
+		Set<Role> roles=new HashSet<Role>();
+		roles.add(role);
+		userDetails.setRoles(roles);
 		userRepository.save(userDetails);
 
 	}
@@ -36,19 +40,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void deleteUser(Long userId) {
 		userRepository.deleteById(userId);
-	}
-
-	@Override
-	public void updateUser(Long userId, UserDetailsDTO userDetails) {
-
-		User user = userRepository.findById(userId).get();
-		if (userDetails.getCalorieCount() != null) {
-			user.setUserCalorieLimit(userDetails.getCalorieCount());
-		}
-
-		
-		userRepository.save(user);
-
 	}
 
 	@Override

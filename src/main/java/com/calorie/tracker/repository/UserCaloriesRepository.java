@@ -11,5 +11,7 @@ import com.calorie.tracker.model.UserCalorie;
 public interface UserCaloriesRepository extends JpaRepository<UserCalorie,Long>{
 
 	List<UserCalorie> findByUserId(Long userId);
+
+	void deleteByUserId(Long id);
 	
 }

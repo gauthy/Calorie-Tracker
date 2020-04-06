@@ -27,7 +27,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+    
+    	
+        http.cors().and().csrf().disable()
+        .httpBasic().and()
             .authorizeRequests()
                 .antMatchers("/resources/**", "/registration").permitAll()
                 .anyRequest().authenticated()
@@ -38,6 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .and()
             .logout()
                 .permitAll();
+               
     }
 
     @Bean
@@ -47,6 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    	
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
     }
 
